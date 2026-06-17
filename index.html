@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniseh Keshtkaran — Portfolio</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;transition:background 0.3s,color 0.3s;max-width:1400px;margin:auto}
+  body.light{background:#fff;color:#1a1a1a}
+  body.dark{background:#0f0d1a;color:#e8e6f0}
+
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.25rem 2.5rem;border-bottom:1px solid var(--nb);position:sticky;top:0;z-index:10;transition:background 0.3s;backdrop-filter:blur(10px)}
+  body.light nav{background:#fff;--nb:rgba(0,0,0,0.1)}
+  body.dark nav{background:#0f0d1a;--nb:rgba(255,255,255,0.08)}
+  .nav-logo{font-size:15px;font-weight:600;color:#7F77DD}
+  .nav-links{display:flex;gap:1.75rem;align-items:center}
+  .nav-links a{font-size:13px;text-decoration:none;cursor:pointer;transition:color 0.2s;position:relative}
+  .nav-links a::after{content:'';position:absolute;left:0;bottom:-4px;width:0;height:2px;background:#7F77DD;transition:width .25s ease}
+  .nav-links a:hover::after{width:100%}
+  body.light .nav-links a{color:#666}
+  body.dark .nav-links a{color:rgba(255,255,255,0.45)}
+  .nav-links a:hover{color:#7F77DD}
+
+  .toggle{display:flex;align-items:center;gap:7px;cursor:pointer;padding:6px 12px;border-radius:20px;border:1px solid;transition:all 0.2s;font-size:12px;font-weight:500;background:none}
+  body.light .toggle{border-color:rgba(0,0,0,0.15);color:#555;background:#f5f5f5}
+  body.dark .toggle{border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.6);background:rgba(255,255,255,0.06)}
+  .toggle:hover{border-color:#7F77DD;color:#7F77DD}
+  .toggle i{font-size:15px}
+
+  .hero{padding:5rem 2.5rem 4rem;border-bottom:1px solid;transition:all 0.3s}
+  body.light .hero{background:linear-gradient(135deg,#EEEDFE 0%,#E1F5EE 60%,#E6F1FB 100%);border-color:#ddd}
+  body.dark .hero{background:#0f0d1a;border-color:rgba(255,255,255,0.08)}
+  .hero-eyebrow{font-size:12px;letter-spacing:0.08em;color:#7F77DD;text-transform:uppercase;font-weight:600}
+  .hero-name{font-size:58px;font-weight:600;line-height:1.1;margin-top:0.5rem;letter-spacing:-1px;transition:color 0.3s}
+  body.light .hero-name{color:#26215C}
+  body.dark .hero-name{color:#fff}
+  .hero-title{font-size:17px;margin-top:0.5rem;transition:color 0.3s}
+  body.light .hero-title{color:#3C3489}
+  body.dark .hero-title{color:#9F99E8}
+  .hero-bio{font-size:15px;line-height:1.75;max-width:700px;margin-top:0.875rem;transition:color 0.3s}
+  body.light .hero-bio{color:#444}
+  body.dark .hero-bio{color:rgba(255,255,255,0.55)}
+  .hero-links{display:flex;gap:10px;margin-top:1.5rem;flex-wrap:wrap}
+  .hero-link{display:inline-flex;align-items:center;gap:7px;font-size:13px;padding:9px 16px;border-radius:8px;text-decoration:none;font-weight:500;transition:background 0.2s}
+  .hl-github{background:#26215C;color:#EEEDFE}.hl-github:hover{background:#3C3489}
+  .hl-linkedin{background:#185FA5;color:#E6F1FB}.hl-linkedin:hover{background:#0C447C}
+  body.light .hl-email{background:#fff;color:#1a1a1a;border:1px solid #ccc}
+  body.light .hl-email:hover{background:#f0f0f0}
+  body.dark .hl-email{background:rgba(255,255,255,0.08);color:#e8e6f0;border:1px solid rgba(255,255,255,0.15)}
+  body.dark .hl-email:hover{background:rgba(255,255,255,0.13)}
+  .hero-link i{font-size:15px}
+
+  section{padding:2.75rem 2.5rem}
+  .section-label{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:1.25rem;font-weight:600;transition:color 0.3s}
+  body.light .section-label{color:#999}
+  body.dark .section-label{color:rgba(255,255,255,0.3)}
+  .divider{height:1px;margin:0 2.5rem;transition:background 0.3s}
+  body.light .divider{background:#ebebeb}
+  body.dark .divider{background:rgba(255,255,255,0.07)}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:14px}
+  .skill-card{border-radius:10px;padding:1rem 1.1rem;transition:all 0.3s}.skill-card:hover{transform:translateY(-4px)}
+  body.light .skill-card.s-lang{background:#EEEDFE;border:1px solid #AFA9EC}
+  body.dark .skill-card.s-lang{background:#1e1a3a;border:1px solid #3C3489}
+  body.light .skill-card.s-tools{background:#E1F5EE;border:1px solid #5DCAA5}
+  body.dark .skill-card.s-tools{background:#0d2318;border:1px solid #0F6E56}
+  body.light .skill-card.s-soft{background:#E6F1FB;border:1px solid #85B7EB}
+  body.dark .skill-card.s-soft{background:#0c1e33;border:1px solid #185FA5}
+  body.light .skill-card.s-spoken{background:#FAEEDA;border:1px solid #EF9F27}
+  body.dark .skill-card.s-spoken{background:#2a1e08;border:1px solid #854F0B}
+  .skill-card-label{font-size:11px;margin-bottom:9px;text-transform:uppercase;letter-spacing:0.06em;font-weight:600}
+  body.light .s-lang .skill-card-label{color:#534AB7}
+  body.dark .s-lang .skill-card-label{color:#9F99E8}
+  body.light .s-tools .skill-card-label{color:#0F6E56}
+  body.dark .s-tools .skill-card-label{color:#5DCAA5}
+  body.light .s-soft .skill-card-label{color:#185FA5}
+  body.dark .s-soft .skill-card-label{color:#85B7EB}
+  body.light .s-spoken .skill-card-label{color:#854F0B}
+  body.dark .s-spoken .skill-card-label{color:#EF9F27}
+  .skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+  .tag{font-size:12px;padding:3px 10px;border-radius:20px;transition:all 0.3s}
+  body.light .tag{background:#fff;border:1px solid #e0e0e0;color:#555}
+  body.dark .tag{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6)}
+
+  .projects-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+  .project-card{border-radius:12px;padding:1.375rem;display:flex;flex-direction:column;gap:10px;border-top-width:2px;transition:all 0.3s}.project-card:hover{transform:translateY(-6px)}
+  body.light .project-card{background:#fff;border:1px solid #e8e8e8;box-shadow:0 4px 18px rgba(0,0,0,.04)}
+  body.dark .project-card{background:#17142a;border:1px solid rgba(255,255,255,0.09);box-shadow:0 4px 18px rgba(0,0,0,.25)}
+  .pc-green{border-top-color:#1D9E75!important}
+  .pc-blue{border-top-color:#378ADD!important}
+  .pc-purple{border-top-color:#7F77DD!important}
+  .project-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:2px}
+  .project-card h3{font-size:15px;font-weight:600;transition:color 0.3s}
+  body.light .project-card h3{color:#1a1a1a}
+  body.dark .project-card h3{color:#fff}
+  .project-card p{font-size:13px;line-height:1.65;flex:1;transition:color 0.3s}
+  body.light .project-card p{color:#666}
+  body.dark .project-card p{color:rgba(255,255,255,0.5)}
+  .project-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:4px}
+  .project-tag{font-size:11px;padding:3px 9px;border-radius:12px}
+
+  .edu-block{border-left:3px solid #7F77DD;padding-left:1.375rem}
+  .edu-block h3{font-size:15px;font-weight:600;transition:color 0.3s}
+  body.light .edu-block h3{color:#1a1a1a}
+  body.dark .edu-block h3{color:#fff}
+  .edu-block .meta{font-size:13px;color:#9F99E8;font-weight:500;margin-top:3px}
+  .edu-block .courses{font-size:13px;line-height:1.65;margin-top:6px;transition:color 0.3s}
+  body.light .edu-block .courses{color:#777}
+  body.dark .edu-block .courses{color:rgba(255,255,255,0.4)}
+
+  .certs-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin-top:1.25rem}
+  .cert-item{display:flex;align-items:center;gap:10px;padding:0.9rem 1rem;border-radius:9px;transition:all 0.3s}.cert-item:hover{transform:translateY(-4px)}
+  body.light .cert-item{background:#EEEDFE;border:1px solid #AFA9EC}
+  body.dark .cert-item{background:#1e1a3a;border:1px solid #3C3489}
+  .cert-item i{font-size:18px;color:#7F77DD}
+  .cert-item span{font-size:13px;font-weight:500;transition:color 0.3s}
+  body.light .cert-item span{color:#26215C}
+  body.dark .cert-item span{color:#CECBF6}
+
+  .contact-box{border-radius:14px;padding:2rem;transition:all 0.3s}
+  body.light .contact-box{background:linear-gradient(135deg,#26215C,#185FA5)}
+  body.dark .contact-box{background:#17142a;border:1px solid rgba(255,255,255,0.1)}
+  body.light .contact-box .section-label{color:rgba(255,255,255,0.5)}
+  .contact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+  .contact-item{display:flex;align-items:center;gap:10px;padding:0.9rem 1rem;border-radius:9px;transition:all 0.3s}.contact-item:hover{transform:translateY(-4px)}
+  body.light .contact-item{background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.2)}
+  body.dark .contact-item{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1)}
+  .contact-item i{font-size:18px}
+  body.light .contact-item i{color:rgba(255,255,255,0.7)}
+  body.dark .contact-item i{color:rgba(255,255,255,0.4)}
+  body.light .contact-item a,body.light .contact-item span{font-size:13px;color:#fff;text-decoration:none;word-break:break-all}
+  body.dark .contact-item a,body.dark .contact-item span{font-size:13px;color:rgba(255,255,255,0.75);text-decoration:none;word-break:break-all}
+  .contact-item a:hover{color:#9F99E8!important}
+
+  @media(max-width:700px){
+    nav{padding:1rem 1.25rem}
+    .nav-links{gap:1rem}
+    .hero{padding:2.5rem 1.25rem 2rem}
+    .hero-name{font-size:36px}
+    section{padding:2rem 1.25rem}
+    .divider{margin:0 1.25rem}
+  }
+</style>
+</head>
+<body class="light">
+
+<nav>
+  <span class="nav-logo">AK</span>
+  <div class="nav-links">
+    <a href="#skills">Skills</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
+    <button class="toggle" onclick="toggleTheme()"><i class="ti ti-moon" id="themeIcon"></i><span id="themeLabel">Dark</span></button>
+  </div>
+</nav>
+
+<div class="hero">
+  <span class="hero-eyebrow">Computer Engineering Student · Ajman University</span>
+  <h1 class="hero-name">Aniseh<br>Keshtkaran</h1>
+  <p class="hero-title">Software Developer &amp; Computer Engineer</p>
+  <p class="hero-bio">Enthusiastic Computer Engineering student with a strong interest in exploring diverse areas of software development. Skilled in C++, Python, JavaScript, React Native, and HTML — with a keen ability to adapt and learn new technologies quickly.</p>
+  <div class="hero-links">
+    <a class="hero-link hl-github" href="https://github.com/aniseh24" target="_blank"><i class="ti ti-brand-github"></i>GitHub</a>
+    <a class="hero-link hl-linkedin" href="https://www.linkedin.com/in/aniseh-keshtkaran-32bbb8263/" target="_blank"><i class="ti ti-brand-linkedin"></i>LinkedIn</a>
+    <a class="hero-link hl-email" href="mailto:Aniseh94@gmail.com"><i class="ti ti-mail"></i>Email me</a>
+  </div>
+</div>
+
+<section id="skills">
+  <p class="section-label">Skills</p>
+  <div class="skills-grid">
+    <div class="skill-card s-lang">
+      <p class="skill-card-label">Languages</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span><span class="tag">C++</span><span class="tag">Java</span><span class="tag">JavaScript</span><span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">Matlab</span>
+      </div>
+    </div>
+    <div class="skill-card s-tools">
+      <p class="skill-card-label">Frameworks &amp; Tools</p>
+      <div class="skill-tags">
+        <span class="tag">React Native</span><span class="tag">OpenCV</span><span class="tag">Mediapipe</span><span class="tag">Figma</span><span class="tag">MS Office</span>
+      </div>
+    </div>
+    <div class="skill-card s-soft">
+      <p class="skill-card-label">Soft Skills</p>
+      <div class="skill-tags">
+        <span class="tag">Communication</span><span class="tag">Public Speaking</span><span class="tag">Teamwork</span><span class="tag">Problem-solving</span>
+      </div>
+    </div>
+    <div class="skill-card s-spoken">
+      <p class="skill-card-label">Languages spoken</p>
+      <div class="skill-tags">
+        <span class="tag">English</span><span class="tag">Persian</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="projects">
+  <p class="section-label">Projects</p>
+  <div class="projects-grid">
+    <div class="project-card pc-green">
+      <div class="project-icon" id="pi1"><i class="ti ti-eye" id="pi1i"></i></div>
+      <h3>Eye-controlled virtual keyboard</h3>
+      <p>A gaze-tracking-based virtual keyboard using OpenCV and Mediapipe, enabling hands-free typing with dwell-time and blink selection. Focused on accessibility for users with motor disabilities.</p>
+      <div class="project-tags">
+        <span class="project-tag" id="pt1a">Python</span>
+        <span class="project-tag" id="pt1b">OpenCV</span>
+        <span class="project-tag" id="pt1c">Mediapipe</span>
+      </div>
+    </div>
+    <div class="project-card pc-blue">
+      <div class="project-icon" id="pi2"><i class="ti ti-cloud" id="pi2i"></i></div>
+      <h3>Weather forecast app</h3>
+      <p>A weather forecasting app prototype designed in Figma, providing weekly forecasts and real-time severe weather alerts to improve community safety.</p>
+      <div class="project-tags">
+        <span class="project-tag" id="pt2a">Figma</span>
+        <span class="project-tag" id="pt2b">UI/UX Design</span>
+      </div>
+    </div>
+    <div class="project-card pc-purple">
+      <div class="project-icon" id="pi3"><i class="ti ti-mood-smile" id="pi3i"></i></div>
+      <h3>Mood &amp; task tracker app</h3>
+      <p>A mobile app to track daily moods and manage tasks with reminders, mood visualization charts, and task organization — promoting productivity and mental well-being.</p>
+      <div class="project-tags">
+        <span class="project-tag" id="pt3a">React Native</span>
+        <span class="project-tag" id="pt3b">Mobile</span>
+        <span class="project-tag" id="pt3c">Analytics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="education">
+  <p class="section-label">Education</p>
+  <div class="edu-block">
+    <h3>Bachelor of Science in Computer Engineering</h3>
+    <p class="meta">Ajman University &nbsp;·&nbsp; 2021 – 2026</p>
+    <p class="courses">Relevant coursework: Digital System Design, Software Engineering, Microprocessors, Embedded Systems, Data Structures, Computer Networks</p>
+  </div>
+  <p class="section-label" style="margin-top:2rem">Certifications</p>
+  <div class="certs-list">
+    <div class="cert-item"><i class="ti ti-certificate"></i><span>Responsive Web Design</span></div>
+    <div class="cert-item"><i class="ti ti-certificate"></i><span>JavaScript Algorithms &amp; Data Structures</span></div>
+    <div class="cert-item"><i class="ti ti-certificate"></i><span>Front End Development Libraries</span></div>
+    <div class="cert-item"><i class="ti ti-certificate"></i><span>Data Visualization</span></div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<section id="contact">
+  <div class="contact-box">
+    <p class="section-label">Contact</p>
+    <div class="contact-grid">
+      <div class="contact-item"><i class="ti ti-phone"></i><span>0569648818</span></div>
+      <div class="contact-item"><i class="ti ti-mail"></i><a href="mailto:Aniseh94@gmail.com">Aniseh94@gmail.com</a></div>
+      <div class="contact-item"><i class="ti ti-brand-linkedin"></i><a href="https://www.linkedin.com/in/aniseh-keshtkaran-32bbb8263/" target="_blank">LinkedIn</a></div>
+      <div class="contact-item"><i class="ti ti-brand-github"></i><a href="https://github.com/aniseh24" target="_blank">github.com/aniseh24</a></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const themes = {
+    light: {
+      pi1:{bg:'#E1F5EE',ic:'#0F6E56'}, pi2:{bg:'#E6F1FB',ic:'#185FA5'}, pi3:{bg:'#EEEDFE',ic:'#534AB7'},
+      pt1:{bg:'#E1F5EE',c:'#085041'}, pt2:{bg:'#E6F1FB',c:'#0C447C'}, pt3:{bg:'#EEEDFE',c:'#3C3489'}
+    },
+    dark: {
+      pi1:{bg:'#0d2318',ic:'#5DCAA5'}, pi2:{bg:'#0c1e33',ic:'#85B7EB'}, pi3:{bg:'#1e1a3a',ic:'#9F99E8'},
+      pt1:{bg:'#0d2318',c:'#5DCAA5'}, pt2:{bg:'#0c1e33',c:'#85B7EB'}, pt3:{bg:'#1e1a3a',c:'#9F99E8'}
+    }
+  };
+
+  let dark = false;
+
+  function applyTags(t) {
+    [1,2,3].forEach(n => {
+      const icon = document.getElementById('pi'+n);
+      const ic = document.getElementById('pi'+n+'i');
+      if(icon) icon.style.background = t['pi'+n].bg;
+      if(ic) ic.style.color = t['pi'+n].ic;
+    });
+    [['pt1','pt1a','pt1b','pt1c'],['pt2','pt2a','pt2b'],['pt3','pt3a','pt3b','pt3c']].forEach(([key,...ids])=>{
+      ids.forEach(id=>{
+        const el=document.getElementById(id);
+        if(el){el.style.background=t[key].bg;el.style.color=t[key].c;}
+      });
+    });
+  }
+
+  const savedTheme = localStorage.getItem('theme');
+  if(savedTheme === 'dark'){
+    dark = true;
+    document.body.classList.remove('light');
+    document.body.classList.add('dark');
+    document.getElementById('themeIcon').className = 'ti ti-sun';
+    document.getElementById('themeLabel').textContent = 'Light';
+    applyTags(themes.dark);
+  } else {
+    applyTags(themes.light);
+  }
+
+  function toggleTheme() {
+    dark = !dark;
+    document.body.classList.toggle('dark', dark);
+    document.body.classList.toggle('light', !dark);
+    document.getElementById('themeIcon').className = dark ? 'ti ti-sun' : 'ti ti-moon';
+    document.getElementById('themeLabel').textContent = dark ? 'Light' : 'Dark';
+    applyTags(dark ? themes.dark : themes.light);
+    localStorage.setItem('theme', dark ? 'dark' : 'light');
+  }
+</script>
+</body>
+</html>
