@@ -92,6 +92,8 @@
   .pc-green{border-top-color:#1D9E75!important}
   .pc-blue{border-top-color:#378ADD!important}
   .pc-purple{border-top-color:#7F77DD!important}
+  .pc-gold{border-top-color:#D9A438!important}
+  .pc-indigo{border-top-color:#35408C!important}
   .project-icon{width:38px;height:38px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px;margin-bottom:2px}
   .project-card h3{font-size:15px;font-weight:600;transition:color 0.3s}
   body.light .project-card h3{color:#1a1a1a}
@@ -234,6 +236,25 @@
         <span class="project-tag" id="pt3c">Analytics</span>
       </div>
     </div>
+    <div class="project-card pc-gold">
+      <div class="project-icon" id="pi4"><i class="ti ti-scan" id="pi4i"></i></div>
+      <h3>Sift — allergy management app</h3>
+      <p>An all-in-one allergy management app combining product and label scanning, allergy-safe recipes and meal planning, and a nearby safe-restaurant finder — making everyday food decisions safer and easier.</p>
+      <div class="project-tags">
+        <span class="project-tag" id="pt4a">Mobile App</span>
+        <span class="project-tag" id="pt4b">UI/UX Design</span>
+        <span class="project-tag" id="pt4c">Accessibility</span>
+      </div>
+    </div>
+    <div class="project-card pc-indigo">
+      <div class="project-icon" id="pi5"><i class="ti ti-moon-stars" id="pi5i"></i></div>
+      <h3>Dream journal app</h3>
+      <p>A personal dream journal app for logging dreams, with the ability to add and edit entries — making it easy to keep a running record over time.</p>
+      <div class="project-tags">
+        <span class="project-tag" id="pt5a">Mobile App</span>
+        <span class="project-tag" id="pt5b">Journaling</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -273,24 +294,28 @@
   const themes = {
     light: {
       pi1:{bg:'#E1F5EE',ic:'#0F6E56'}, pi2:{bg:'#E6F1FB',ic:'#185FA5'}, pi3:{bg:'#EEEDFE',ic:'#534AB7'},
-      pt1:{bg:'#E1F5EE',c:'#085041'}, pt2:{bg:'#E6F1FB',c:'#0C447C'}, pt3:{bg:'#EEEDFE',c:'#3C3489'}
+      pi4:{bg:'#FAEEDA',ic:'#854F0B'}, pi5:{bg:'#E6EAFB',ic:'#35408C'},
+      pt1:{bg:'#E1F5EE',c:'#085041'}, pt2:{bg:'#E6F1FB',c:'#0C447C'}, pt3:{bg:'#EEEDFE',c:'#3C3489'},
+      pt4:{bg:'#FAEEDA',c:'#854F0B'}, pt5:{bg:'#E6EAFB',c:'#35408C'}
     },
     dark: {
       pi1:{bg:'#0d2318',ic:'#5DCAA5'}, pi2:{bg:'#0c1e33',ic:'#85B7EB'}, pi3:{bg:'#1e1a3a',ic:'#9F99E8'},
-      pt1:{bg:'#0d2318',c:'#5DCAA5'}, pt2:{bg:'#0c1e33',c:'#85B7EB'}, pt3:{bg:'#1e1a3a',c:'#9F99E8'}
+      pi4:{bg:'#2a1e08',ic:'#EF9F27'}, pi5:{bg:'#131b3a',ic:'#7C90F0'},
+      pt1:{bg:'#0d2318',c:'#5DCAA5'}, pt2:{bg:'#0c1e33',c:'#85B7EB'}, pt3:{bg:'#1e1a3a',c:'#9F99E8'},
+      pt4:{bg:'#2a1e08',c:'#EF9F27'}, pt5:{bg:'#131b3a',c:'#7C90F0'}
     }
   };
 
   let dark = false;
 
   function applyTags(t) {
-    [1,2,3].forEach(n => {
+    [1,2,3,4,5].forEach(n => {
       const icon = document.getElementById('pi'+n);
       const ic = document.getElementById('pi'+n+'i');
       if(icon) icon.style.background = t['pi'+n].bg;
       if(ic) ic.style.color = t['pi'+n].ic;
     });
-    [['pt1','pt1a','pt1b','pt1c'],['pt2','pt2a','pt2b'],['pt3','pt3a','pt3b','pt3c']].forEach(([key,...ids])=>{
+    [['pt1','pt1a','pt1b','pt1c'],['pt2','pt2a','pt2b'],['pt3','pt3a','pt3b','pt3c'],['pt4','pt4a','pt4b','pt4c'],['pt5','pt5a','pt5b']].forEach(([key,...ids])=>{
       ids.forEach(id=>{
         const el=document.getElementById(id);
         if(el){el.style.background=t[key].bg;el.style.color=t[key].c;}
